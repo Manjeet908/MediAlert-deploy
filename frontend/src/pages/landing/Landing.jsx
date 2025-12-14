@@ -9,6 +9,13 @@ import Login from "../../components/Login";
 const Landing = () => {
   const navigate = useNavigate();
 
+  const scrollToFeatures = () => {
+    const featuresSection = document.querySelector('.features-section');
+    if (featuresSection) {
+      featuresSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
   const features = [
     {
       icon: Bell,
@@ -62,7 +69,7 @@ const Landing = () => {
           <div className="nav-links">
             <Button
               variant="ghost"
-              onClick={() => navigate("/Dashboard")}
+              onClick={scrollToFeatures}
               className="nav-link"
             >
               Features

@@ -35,6 +35,9 @@ import elixirRoutes from './routes/elixir.routes.js'
 import trackRoutes from './routes/track.routes.js'
 import aiRoutes from './routes/ai.routes.js'
 
+app.get('/api/v1/health', (req, res) => {
+    res.status(200).json({status: 'OK'});
+})
 app.use('/api/v1/google', googleRoutes)
 app.use('/api/v1/users', userRoutes)
 app.use('/api/v1/elixirs', elixirRoutes)

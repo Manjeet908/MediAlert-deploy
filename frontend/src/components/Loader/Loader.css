@@ -1,0 +1,235 @@
+/* src/components/BackendLoader.css */
+
+/* Keyframes for animations */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes progress {
+  0% { left: -100%; }
+  100% { left: 200%; }
+}
+
+/* The full-screen overlay that blocks interaction */
+.loader-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #f8fafc; /* Light gray background */
+  z-index: 99999; /* Force it on top of everything */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: #1e293b;
+}
+
+/* Background gradient effect */
+.loader-bg-decoration {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(238, 242, 255, 0.5), rgba(255,255,255,0.8), rgba(250, 245, 255, 0.5));
+  pointer-events: none;
+}
+
+/* Utilities */
+.spin-icon {
+  animation: spin 1s linear infinite;
+}
+
+.pulse-text {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Simple Loader (Stage 1) */
+.simple-loader {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.icon-wrapper-simple {
+  background: white;
+  padding: 16px;
+  border-radius: 50%;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e0e7ff;
+}
+
+/* Detailed Card (Stage 2 & 3) */
+.loader-card {
+  position: relative;
+  z-index: 10;
+  background: white;
+  width: 90%;
+  max-width: 450px;
+  border-radius: 16px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  overflow: hidden;
+  border: 1px solid #f1f5f9;
+  animation: slideUp 0.6s ease-out forwards;
+  text-align: center;
+}
+
+.card-top-accent {
+  height: 6px;
+  width: 100%;
+  background: linear-gradient(90deg, #6366f1, #a855f7, #ec4899);
+}
+
+.card-content {
+  padding: 32px;
+}
+
+/* Icon styling inside card */
+.card-icon-area {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.card-icon-bg {
+  position: absolute;
+  inset: 0;
+  background-color: #6366f1;
+  border-radius: 50%;
+  filter: blur(24px);
+  opacity: 0.15;
+}
+
+.card-icon-box {
+  position: relative;
+  background: white;
+  padding: 16px;
+  border-radius: 16px;
+  border: 1px solid #f3f4f6;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  color: #4f46e5;
+}
+
+.coffee-badge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background-color: #ffedd5;
+  color: #c2410c;
+  border: 2px solid white;
+  border-radius: 50%;
+  padding: 4px;
+  display: flex;
+}
+
+/* Typography */
+.loader-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: #111827;
+}
+
+.loader-desc {
+  font-size: 0.875rem;
+  color: #64748b;
+  line-height: 1.5;
+  margin-bottom: 16px;
+}
+
+.timer-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #eef2ff;
+  color: #4338ca;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  margin-bottom: 24px;
+}
+
+/* Progress Bar */
+.progress-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #94a3b8;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.progress-track {
+  height: 8px;
+  width: 100%;
+  background-color: #f1f5f9;
+  border-radius: 9999px;
+  overflow: hidden;
+  position: relative;
+}
+
+.progress-bar {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 40%;
+  background-color: #4f46e5;
+  border-radius: 9999px;
+  animation: progress 1.5s infinite linear;
+}
+
+/* Footer note */
+.loader-footer {
+  background-color: #f8fafc;
+  padding: 12px;
+  border-top: 1px solid #f1f5f9;
+}
+
+.footer-text {
+  font-size: 0.75rem;
+  color: #94a3b8;
+  margin: 0;
+}
+
+/* Reload Button */
+.reload-btn {
+  width: 100%;
+  background-color: #1e293b;
+  color: white;
+  padding: 12px;
+  border-radius: 12px;
+  border: none;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+  font-size: 1rem;
+}
+
+.reload-btn:hover {
+  background-color: #0f172a;
+}
